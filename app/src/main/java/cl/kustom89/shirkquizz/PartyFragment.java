@@ -2,10 +2,16 @@ package cl.kustom89.shirkquizz;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class PartyFragment extends Fragment {
@@ -27,5 +33,42 @@ public class PartyFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate( R.layout.fragment_party, container, false );
     }
+
+    @Override//Encuentra las vistas de xml party
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated( view, savedInstanceState );
+        //Encuentra las vistas de xml party ini
+        final RadioGroup radioGroup= view.findViewById( R.id.partyRg );
+        Button button= view.findViewById( R.id.partyBtn );
+        button.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //ver que ocurre en el RADIO Group
+
+               // Log.d( "RADIO GROUP", String.valueOf( radioGroup.getCheckedRadioButtonId() ) );
+
+                //genera una variable que almacene en un id la opcion q vamos a utilizar
+                int id= radioGroup.getCheckedRadioButtonId();
+                if(id!=-1){
+                    RadioButton radioButton=radioGroup.findViewById(id);
+                    String answer=radioButton.getText().toString();
+                    Toast.makeText( getContext(), "Answer", Toast.LENGTH_SHORT ).show();
+                }else{
+                    Toast.makeText( getContext(), "Debes pinchar una opcion", Toast.LENGTH_SHORT ).show();
+                }
+
+
+
+
+
+            }
+        } );
+
+
+
+
+
+     }
 
 }
