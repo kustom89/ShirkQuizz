@@ -1,6 +1,8 @@
 package cl.kustom89.shirkquizz;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -53,7 +55,8 @@ public class PartyFragment extends Fragment {
                 if(id!=-1){
                     RadioButton radioButton=radioGroup.findViewById(id);
                     String answer=radioButton.getText().toString();
-                    Toast.makeText( getContext(), "Answer", Toast.LENGTH_SHORT ).show();
+                    showDialog( answer );
+
                 }else{
                     Toast.makeText( getContext(), "Debes pinchar una opcion", Toast.LENGTH_SHORT ).show();
                 }
@@ -64,11 +67,20 @@ public class PartyFragment extends Fragment {
 
             }
         } );
+    }
+    private void showDialog(String answer){
+        AlertDialog.Builder alertDialog= new AlertDialog.Builder( getActivity() );
+        alertDialog.setTitle( "Nivel de fiesta" );
+        alertDialog.setMessage( new PartyResult( answer ).score() );
+        alertDialog.setPositiveButton( "Yeahh", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
 
+            }
+        } );
+        alertDialog.show();
 
-
-
-
-     }
+    }
 
 }

@@ -1,13 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cl.kustom89.shirkquizz.MatchFragment">
+    tools:context="cl.kustom89.shirkquizz.MatchFragment"
+    android:gravity="right"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:padding="8dp"
+        android:text="Cual es tu edad"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Match" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <SeekBar
+        android:id="@+id/userSb"
+        android:max="120"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/userTv"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"/>
+
+    <TextView
+        android:padding="8dp"
+        android:text="Cual es la edad de tu pareja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <SeekBar
+        android:id="@+id/loverSb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:max="120" />
+
+    <TextView
+        android:id="@+id/loverTv"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"/>
+
+    <Button
+        android:layout_marginTop="16dp"
+        android:id="@+id/matchBtn"
+        android:text="Enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
