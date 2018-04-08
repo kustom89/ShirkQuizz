@@ -1,6 +1,8 @@
 package cl.kustom89.shirkquizz;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,7 +40,6 @@ public class LuckyFragment extends Fragment {
 
         CheckBox happy =view.findViewById( R.id.happyCb );
         final CheckBox mood= view.findViewById( R.id.moodCb );
-
         Button button=view.findViewById( R.id.luckyBtn );
 
         //metodo para checkbox happy cambie si mood esta checkeado
@@ -46,18 +47,30 @@ public class LuckyFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mood.setChecked( isChecked );
-
             }
         } );
 
         button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean answer= mood.isChecked();
-                Log.d( "ANSWER", String.valueOf( answer ) );
+                boolean answer = mood.isChecked();
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder( getActivity() );
+                alertDialog.setTitle( "your Lucky" );
+                alertDialog.setMessage( new LuckyResult( answer ).resultLucky());
+                alertDialog.setPositiveButton( "ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                } );
+                alertDialog.show();
 
             }
-        } );
-
+        });
     }
+
+
+
+
+
 }

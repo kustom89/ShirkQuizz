@@ -20,9 +20,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return PartyFragment.newInstance();
             case 1:
-                return MatchFragment.newInstance();
-            case 2:
                 return LuckyFragment.newInstance();
+            case 2:
+                return MatchFragment.newInstance();
                 default:
                     return PartyFragment.newInstance();
         }
@@ -42,9 +42,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "PArty";//mismo caso q getIntem misma posicion
             case 1:
-                return "MAtch";
-            case 2:
                 return "Lucky";
+            case 2:
+                return "Match";
 
         }
         return null;

@@ -57,6 +57,7 @@ public class PartyFragment extends Fragment {
                     String answer=radioButton.getText().toString();
                     showDialog( answer );
 
+
                 }else{
                     Toast.makeText( getContext(), "Debes pinchar una opcion", Toast.LENGTH_SHORT ).show();
                 }
@@ -68,18 +69,19 @@ public class PartyFragment extends Fragment {
             }
         } );
     }
-    private void showDialog(String answer){
-        AlertDialog.Builder alertDialog= new AlertDialog.Builder( getActivity() );
-        alertDialog.setTitle( "Nivel de fiesta" );
-        alertDialog.setMessage( new PartyResult( answer ).score() );
-        alertDialog.setPositiveButton( "Yeahh", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
 
-            }
-        } );
-        alertDialog.show();
+
+    private void showDialog(String answer){
+         AlertDialog.Builder alertDialog= new AlertDialog.Builder(  getActivity());
+         alertDialog.setTitle( "Nivel de Fiesta" );
+         alertDialog.setMessage( new PartyResult(answer ).score() );
+         alertDialog.setPositiveButton( "Yeah", new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+                 dialog.dismiss();
+             }
+         });
+         alertDialog.show();
 
     }
 

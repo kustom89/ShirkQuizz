@@ -1,6 +1,8 @@
 package cl.kustom89.shirkquizz;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -85,7 +87,20 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int user=userSb.getProgress();
-                int lover=loverSb.getProgress();
+                int lover =loverSb.getProgress();
+
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder( getActivity() );
+                alertDialog.setTitle( "Resultado de compatibilidad" );
+                alertDialog.setMessage( new MatchResult( user,lover ).MatchResult() );
+                alertDialog.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                } );
+                alertDialog.show();
+
+
             }
         } );
 
